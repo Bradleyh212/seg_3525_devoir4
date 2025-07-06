@@ -1,0 +1,51 @@
+.hero {
+  background: var(--color-light);
+  padding: 4rem 0;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  color: var(--color-dark);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.stats strong {
+  font-size: 1.5rem;
+  display: block;
+  color: var(--color-dark);
+}
+
+.stats p {
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  color: var(--color-dark);
+}
+
+.divider {
+  width: 1px;
+  height: 50px;
+  background: var(--color-dark);
+}
+
+.hero-image img {
+  max-width: 400px;
+  display: block;
+}

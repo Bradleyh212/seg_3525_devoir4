@@ -1,7 +1,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header'
+import './index.css';
+
+
+import Header from './components/Header';
+import Hero from './components/Hero';
 
 
 function App() {
@@ -9,6 +13,9 @@ function App() {
 	return (
 		<>
  				<Header />
+				<main>
+					<Hero />
+				</main>
 
 
 		</>
