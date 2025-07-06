@@ -1,58 +1,67 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+
 import './Header.css';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const navItems = [
-    { label: 'Home',       path: '#home' },
-    { label: 'Products',   path: '/products' },
-    { label: 'About Us',   path: '#about-us' },   // ← hash link
-    { label: 'Categories', path: '#categories' },
+    { label: 'Home',       to: '/' }, 
+    { label: 'Products',   to: '/products' },
+    { label: 'About Us',   to: '/#about-us' },
+    { label: 'Categories', to: '/#categories' },
   ];
 
-  const toggleMenu = () => setMenuOpen(open => !open);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className="header">
       <div className="container">
-        <a href="/" className="logo" onClick={() => setMenuOpen(false)}>
+        <NavLink
+          to="/"
+          className="logo"
+          onClick={closeMenu}
+        >
           <span className="logo-text">GREENMIND</span>
-        </a>
+        </NavLink>
+
 
         <button
           className={`hamburger${menuOpen ? ' is-active' : ''}`}
-          onClick={toggleMenu}
+          onClick={() => setMenuOpen(prev => !prev)}
           aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
         >
           <span />
           <span />
           <span />
         </button>
 
+
         <nav className={`nav${menuOpen ? ' open' : ''}`}>
           <ul className="nav-list">
-            {navItems.map(item => (
-              <li key={item.label}>
-                {item.path.startsWith('#') ? (
-                  // plain anchor for hash in-page links
-                  <a
-                    href={item.path}
+            {navItems.map(({ label, to }) => (
+              <li key={label}>
+                {to.includes('#') ? (
+                  <HashLink
+                    smooth
+                    to={to}
                     className="nav-link"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={closeMenu}
                   >
-                    {item.label}
-                  </a>
+                    {label}
+                  </HashLink>
                 ) : (
-                  // react-router NavLink for real routes
                   <NavLink
-                    to={item.path}
+                    to={to}
                     className={({ isActive }) =>
                       isActive ? 'nav-link active' : 'nav-link'
                     }
-                    onClick={() => setMenuOpen(false)}
+                    onClick={closeMenu}
                   >
-                    {item.label}
+                    {label}
                   </NavLink>
                 )}
               </li>
