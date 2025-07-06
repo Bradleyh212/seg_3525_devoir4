@@ -4,7 +4,7 @@ import './Hero.css';
 
 export default function Hero() {
   return (
-    <section className="hero">
+    <section id='home' className="hero">
       <div className="hero-content container">
         <div className="hero-text">
           <h1>Buy your dream plants</h1>

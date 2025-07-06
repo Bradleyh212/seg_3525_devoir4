@@ -1,0 +1,65 @@
+.categories {
+  background: linear-gradient(
+    to bottom,
+    #fff 0%,
+    #fff 40%,
+    var(--color-light) 40%,
+    var(--color-light) 100%
+  );
+  padding: 6rem 0;
+  text-align: center;
+}
+
+/* Override the flex-container from Header only inside this section */
+.categories .container {
+  display: block;
+}
+
+.categories h2 {
+  font-size: 2rem;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.categories .subtitle {
+  font-family: var(--font-sans);
+  color: var(--color-medium);
+  margin-bottom: 2rem;
+}
+
+.category-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.category-item img {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1.2;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.category-item h3 {
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  color: var(--color-dark);
+}
+
+.explore-btn {
+  display: inline-block;
+  background: #fff;
+  color: var(--color-dark);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.explore-btn:hover {
+  transform: translateY(-2px);
+}
