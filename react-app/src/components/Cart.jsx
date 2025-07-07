@@ -2,6 +2,52 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import './Cart.css';
 
+//stars
+
+function Star({ filled, onClick }) {
+  return (
+    <span
+      className={`star ${filled ? 'filled' : ''}`}
+      onClick={onClick}
+      role="button"
+      aria-label={filled ? 'Filled star' : 'Empty star'}
+    >
+      ★
+    </span>
+  );
+}
+
+function RatingModal({ onClose }) {
+  const [rating, setRating] = useState(0);
+
+  const sendRating = () => {
+    alert('Thanks for the rating!'); // or any custom UI
+    onClose();
+  };
+
+  return (
+    <div className="rating-overlay">
+      <div className="rating-box">
+        <button className="rating-close" onClick={onClose}>×</button>
+        <h2>Your Order has been Placed!</h2>
+        <p>Leave us a rating!</p>
+        <div className="stars">
+          {[1,2,3,4,5].map(n => (
+            <Star
+              key={n}
+              filled={n <= rating}
+              onClick={() => setRating(n)}
+            />
+          ))}
+        </div>
+        <button className="send-rating" onClick={sendRating}>
+          Send Rating!
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Cart() {
 	const { cart, dispatch } = useCart();
 
@@ -16,6 +62,14 @@ export default function Cart() {
 		setForm({ ...form, [e.target.name]: e.target.value });
 
 	const total = cart.reduce((sum, p) => sum + p.qty * p.price, 0).toFixed(2);
+
+	const [showModal, setShowModal] = useState(false);
+
+	const handlePlaceOrder = e => {
+    e.preventDefault();
+    setShowModal(true);
+  };
+
 
 	return (
 		<section className="cart-page">
@@ -62,7 +116,7 @@ export default function Cart() {
 					)}
 				</div>
 
-				<form className="checkout-form" onSubmit={e => e.preventDefault()}>
+				<form className="checkout-form" onSubmit={handlePlaceOrder}>
 					<input
 						type="text" name="name" placeholder="Name"
 						value={form.name} onChange={handleInput} required
@@ -80,11 +134,12 @@ export default function Cart() {
 						value={form.address} onChange={handleInput} required
 					/>
 
-					<button className="place-order">
+					<button type="submit" className="place-order">
 						Place&nbsp;Order&nbsp; →
 					</button>
 				</form>
 			</div>
+			 {showModal && <RatingModal onClose={() => setShowModal(false)} />}
 		</section>
 	);
 }
