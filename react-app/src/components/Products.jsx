@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './Products.css';
 
+import { useCart } from '../context/CartContext';
+
+
 import imgNaturalLong         from '../assets/natural_long.png';
 import imgNaturalFloating     from '../assets/natural_floating.png';
 import imgNaturalCactus       from '../assets/natural_cactus.png';
@@ -42,6 +45,8 @@ function Products() {
 		return matchCategory && matchSearch;
 	});
 
+	const { dispatch } = useCart();
+
 	return (
 		<section className="products-page">
 			<div className="products-inner">
@@ -76,6 +81,13 @@ function Products() {
 							<img src={p.img} alt={p.name} />
 							<h4>{p.name}</h4>
 							<p>$ {p.price.toFixed(2)}</p>
+
+							<button
+							  className="add-btn"
+							  onClick={() => dispatch({ type: 'ADD', item: p })}
+							>
+							  Add to cart
+							</button>
 						</li>
 					))}
 				</ul>

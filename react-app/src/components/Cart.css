@@ -1,0 +1,141 @@
+:root {
+	--page-bg: #c9e0e0;
+	--card-bg: #fff;
+	--accent: #8cbdbc;
+	--accent-dark: #2c2c2c;
+	--radius: 10px;
+	--gap: 2rem;
+	font-family: "Poppins", sans-serif;
+}
+
+.cart-page {
+	background: var(--page-bg);
+	padding: 3rem 2rem;
+	min-height: calc(100vh - var(--header-h, 72px) - var(--footer-h, 120px));
+}
+
+.cart-title {
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+.title-icon { font-size: 2.2rem; }
+
+.cart-grid {
+	max-width: 1150px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 380px;
+	gap: var(--gap);
+}
+
+@media (max-width: 900px) {
+	.cart-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.item-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+}
+
+.item-card {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	background: var(--card-bg);
+	border-radius: var(--radius);
+	padding: 1rem 1.25rem;
+	box-shadow: 0 0 0 2px #fff inset;
+}
+
+.item-card img {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+	border-radius: var(--radius);
+}
+
+.item-name {
+	flex: 1;
+	font-weight: 500;
+}
+
+.qty-box {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+.qty-box button {
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: var(--radius);
+	background: var(--accent);
+	color: #fff;
+	font-size: 1.35rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.qty-box button:hover { background: var(--accent-dark); }
+
+.checkout-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.checkout-form input {
+	padding: 0.9rem 1.1rem;
+	border-radius: var(--radius);
+	border: none;
+	font-size: 1rem;
+}
+
+.place-order {
+	margin-top: 0.5rem;
+	align-self: flex-start;
+	padding: 0.9rem 2.2rem;
+	border: none;
+	border-radius: var(--radius);
+	background: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.25s;
+}
+.place-order:hover { background: var(--accent); color: #fff; }
+
+.item-price {
+	font-weight: 500;
+	min-width: 70px;
+	text-align: right;
+}
+
+.remove-btn {
+	background: transparent;
+	border: none;
+	font-size: 1.25rem;
+	color: #999;
+	cursor: pointer;
+	margin-left: 0.5rem;
+	transition: color .2s;
+}
+.remove-btn:hover { color: #d33; }
+
+.cart-footer {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+	font-size: 1.2rem;
+	font-weight: 600;
+}

@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
-import cartSvg from '../assets/shopping_cart.svg';
-
+import { useCart } from '../context/CartContext';
+import cartSvg      from '../assets/shopping_cart.svg';
 import './Header.css';
 
 export default function Header() {
+  const { cart }   = useCart();
+  const totalQty   = cart.reduce((s, i) => s + i.qty, 0);
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
@@ -27,13 +30,11 @@ export default function Header() {
 
         <button
           className={`hamburger${menuOpen ? ' is-active' : ''}`}
-          onClick={() => setMenuOpen(prev => !prev)}
+          onClick={() => setMenuOpen(p => !p)}
           aria-label="Toggle navigation"
           aria-expanded={menuOpen}
         >
-          <span />
-          <span />
-          <span />
+          <span/><span/><span/>
         </button>
 
         <nav className={`nav${menuOpen ? ' open' : ''}`}>
@@ -54,8 +55,6 @@ export default function Header() {
                   >
                     {label}
                   </NavLink>
-
-
                 )}
               </li>
             ))}
@@ -63,9 +62,11 @@ export default function Header() {
         </nav>
 
         <NavLink to="/cart" className="cart-link" onClick={closeMenu}>
-          <img src={cartSvg} alt="Cart" className="cart-icon" />
+          <img src={cartSvg} alt="cart" className="cart-icon" />
+          {totalQty > 0 && (
+            <span className="cart-badge">{totalQty}</span>
+          )}
         </NavLink>
-        
       </div>
     </header>
   );

@@ -111,17 +111,28 @@
   text-decoration: none !important;
 }
 
+.header .container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.8rem;
+}
+
+.nav { 
+  display: flex;
+  margin-left: auto;
+}
+
 .cart-link {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.cart-icon {
-  width: 26px;
-  height: 26px;
-  fill: currentColor;
-}
+.cart-icon { width: 26px; height: 26px; }
 
 .cart-badge {
   position: absolute;
@@ -130,10 +141,11 @@
   background: #d53;
   color: #fff;
   font-size: 0.7rem;
-  height: 18px;
   min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  padding: 0 4px;
+  line-height: 1;
 }
