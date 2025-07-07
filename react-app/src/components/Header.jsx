@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
+import cartSvg from '../assets/shopping_cart.svg';
+
 import './Header.css';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { label: 'Home',       to: '/' }, 
+    { label: 'Home',       to: '/' },
     { label: 'Products',   to: '/products' },
     { label: 'About Us',   to: '/#about-us' },
-    { label: 'Categories', to: '/#categories' },
+    { label: 'Categories', to: '/#categories' }
   ];
 
   const closeMenu = () => setMenuOpen(false);
@@ -19,14 +21,9 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container">
-        <NavLink
-          to="/"
-          className="logo"
-          onClick={closeMenu}
-        >
+        <NavLink to="/" className="logo" onClick={closeMenu}>
           <span className="logo-text">GREENMIND</span>
         </NavLink>
-
 
         <button
           className={`hamburger${menuOpen ? ' is-active' : ''}`}
@@ -39,18 +36,12 @@ export default function Header() {
           <span />
         </button>
 
-
         <nav className={`nav${menuOpen ? ' open' : ''}`}>
           <ul className="nav-list">
             {navItems.map(({ label, to }) => (
               <li key={label}>
                 {to.includes('#') ? (
-                  <HashLink
-                    smooth
-                    to={to}
-                    className="nav-link"
-                    onClick={closeMenu}
-                  >
+                  <HashLink smooth to={to} className="nav-link" onClick={closeMenu}>
                     {label}
                   </HashLink>
                 ) : (
@@ -63,11 +54,18 @@ export default function Header() {
                   >
                     {label}
                   </NavLink>
+
+
                 )}
               </li>
             ))}
           </ul>
         </nav>
+
+        <NavLink to="/cart" className="cart-link" onClick={closeMenu}>
+          <img src={cartSvg} alt="Cart" className="cart-icon" />
+        </NavLink>
+        
       </div>
     </header>
   );
