@@ -1,95 +1,37 @@
 import React, { useState } from 'react';
 import './Products.css';
 
+import imgNaturalLong         from '../assets/natural_long.png';
+import imgNaturalFloating     from '../assets/natural_floating.png';
+import imgNaturalCactus       from '../assets/natural_cactus.png';
+import imgArtificialFloating  from '../assets/artificial_floating.png';
+import imgNaturalMoneyPlant   from '../assets/natural_money_plant.png';
+import imgNaturalBonsai       from '../assets/natural_bonsai.png';
+import imgArtificialLongLeaf  from '../assets/artificial_long_leaf.png';
+import imgArtificialColourful from '../assets/artificial_colorful_leaf.png';
+import imgArtificialPink      from '../assets/artificial_pink.png';
+import imgAccWateringPot      from '../assets/accessories_watering_pot.png';
+import imgAccPot              from '../assets/accessories_pot.png';
+import imgAccHanger from '../assets/accessories_plant_hanger.png';
+
+
 const allProducts = [
-	{
-		id: 1,
-		name: 'Natural – Long',
-		category: 'Natural',
-		price: 18.65,
-		img: '/assets/natural-long.jpg'
-	},
-	{
-		id: 2,
-		name: 'Natural – Floating',
-		category: 'Natural',
-		price: 11.23,
-		img: '/assets/natural-floating.jpg'
-	},
-	{
-		id: 3,
-		name: 'Natural – Cactus',
-		category: 'Natural',
-		price: 19.0,
-		img: '/assets/natural-cactus.jpg'
-	},
-	{
-		id: 4,
-		name: 'Artificial – Floating',
-		category: 'Artificial',
-		price: 23.12,
-		img: '/assets/artificial-floating.jpg'
-	},
-	{
-		id: 5,
-		name: 'Natural – Money Plant',
-		category: 'Natural',
-		price: 18.45,
-		img: '/assets/natural-money.jpg'
-	},
-	{
-		id: 6,
-		name: 'Natural – Bonsai',
-		category: 'Natural',
-		price: 50.23,
-		img: '/assets/natural-bonsai.jpg'
-	},
-	{
-		id: 7,
-		name: 'Artificial – Long Leaf',
-		category: 'Artificial',
-		price: 21.34,
-		img: '/assets/artificial-long.jpg'
-	},
-	{
-		id: 8,
-		name: 'Artificial – Colourful Leaf',
-		category: 'Artificial',
-		price: 31.87,
-		img: '/assets/artificial-colourful.jpg'
-	},
-	{
-		id: 9,
-		name: 'Artificial – Pink',
-		category: 'Artificial',
-		price: 25.99,
-		img: '/assets/artificial-pink.jpg'
-	},
-	{
-		id: 10,
-		name: 'Accessories – Watering Pot',
-		category: 'Accessories',
-		price: 42.95,
-		img: '/assets/accessories-watering.jpg'
-	},
-	{
-		id: 11,
-		name: 'Accessories – Pots',
-		category: 'Accessories',
-		price: 29.99,
-		img: '/assets/accessories-pot.jpg'
-	},
-	{
-		id: 12,
-		name: 'Accessories – Plant Hanger',
-		category: 'Accessories',
-		price: 36.75,
-		img: '/assets/accessories-hanger.jpg'
-	}
+	{ id: 1,  name: 'Natural – Long',           category: 'Natural',     price: 18.65, img: imgNaturalLong },
+	{ id: 2,  name: 'Natural – Floating',       category: 'Natural',     price: 11.23, img: imgNaturalFloating },
+	{ id: 3,  name: 'Natural – Cactus',         category: 'Natural',     price: 19.00, img: imgNaturalCactus },
+	{ id: 4,  name: 'Artificial – Floating',    category: 'Artificial',  price: 23.12, img: imgArtificialFloating },
+	{ id: 5,  name: 'Natural – Money Plant',    category: 'Natural',     price: 18.45, img: imgNaturalMoneyPlant },
+	{ id: 6,  name: 'Natural – Bonsai',         category: 'Natural',     price: 50.23, img: imgNaturalBonsai },
+	{ id: 7,  name: 'Artificial – Long Leaf',   category: 'Artificial',  price: 21.34, img: imgArtificialLongLeaf },
+	{ id: 8,  name: 'Artificial – Colourful Leaf', category: 'Artificial', price: 31.87, img: imgArtificialColourful },
+	{ id: 9,  name: 'Artificial – Pink',        category: 'Artificial',  price: 25.99, img: imgArtificialPink },
+	{ id: 10, name: 'Accessories – Watering Pot', category: 'Accessories', price: 42.95, img: imgAccWateringPot },
+	{ id: 11, name: 'Accessories – Pots',       category: 'Accessories', price: 29.99, img: imgAccPot },
+	{ id: 12, name: 'Accessories – Plant Hanger', category: 'Accessories', price: 36.75, img: imgAccHanger }
 ];
 
-export default function Products() {
 
+function Products() {
 	const [search, setSearch] = useState('');
 	const [category, setCategory] = useState('All Categories');
 
@@ -101,7 +43,7 @@ export default function Products() {
 	});
 
 	return (
-		<section className="products-page"
+		<section className="products-page">
 			<div className="products-inner">
 				<div className="filters">
 					<div className="search-box">
@@ -141,3 +83,6 @@ export default function Products() {
 		</section>
 	);
 }
+
+
+export default Products;
